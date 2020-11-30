@@ -247,6 +247,7 @@ public class GameTest {
     // Below here are 3 broken tests. qq
 
     // Why should this test fail? How can I have 2 ace of diamonds, an illegal hand.
+    // So this test passes but should raise an exception.
     @Test
     public void a_pair_beats_high_card() {
         Player player = aPlayerWithHand(aceOf(Diamonds), aceOf(Diamonds), fourOf(Diamonds));
@@ -263,8 +264,8 @@ public class GameTest {
         assertThat(player, winsAgainst(otherPlayer));
     }
 
-    // According to mycasinostrategy.com, three of a kind beats a straing in three
-    // card poker so this test should pass.
+    // According to mycasinostrategy.com, three of a kind beats a straight in three
+    // card poker so this test should pass but it fails.
     @Test
     public void three_of_a_kind_beats_a_straight() {
         Player player = aPlayerWithHand(twoOf(Diamonds), twoOf(Clubs), twoOf(Spades));

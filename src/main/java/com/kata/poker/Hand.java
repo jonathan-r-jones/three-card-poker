@@ -48,6 +48,10 @@ public class Hand {
         return sortedList;
     }
 
+    public List<Card> getCards() {
+        return cards;
+    }
+
     public boolean hasThreeCardsWithTheSameValue() {
         return !selectThreeCardsWithTheSameValue().isEmpty();
     }

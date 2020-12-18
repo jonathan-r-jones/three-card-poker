@@ -261,7 +261,7 @@ public class GameTest {
     public void three_aces_beats_two_aces() {
         Player player = aPlayerWithHand(aceOf(Diamonds), aceOf(Hearts), aceOf(Spades));
         Player otherPlayer = aPlayerWithHand(kingOf(Spades), kingOf(Hearts), aceOf(Spades));
-        assertThat(player, winsAgainst(otherPlayer));
+        assert(player, winsAgainst(otherPlayer));
     }
 
     // According to mycasinostrategy.com, three of a kind beats a straight in three
@@ -290,8 +290,12 @@ public class GameTest {
             @Override
             protected boolean matchesSafely(Player winningPlayer, Description mismatchDescription) {
                 winner = new Winner(winningPlayer);
-                GameResult firstResult = game.play(winningPlayer, player);
-                GameResult secondResult = game.play(player, winningPlayer);
+                GameResult firstResult = game.play(player, winningPlayer);
+                GameResult secondResult = game.play( winningPlayer, player);
+
+//                try {
+//
+//                }
 
                 if (!firstResult.equals(winner)) {
                     mismatchDescription.appendText("was " + firstResult);

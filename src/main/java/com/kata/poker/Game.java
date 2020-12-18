@@ -1,5 +1,7 @@
 package com.kata.poker;
 
+import java.util.HashSet;
+
 public class Game {
 
     private final GameRules rules;
@@ -8,7 +10,14 @@ public class Game {
         this.rules = rules;
     }
 
-    GameResult play(Player firstPlayer, Player secondPlayer) {
+        GameResult play(Player firstPlayer, Player secondPlayer) {
+        HashSet<Card> sharedCards = new HashSet<>();
+        for(int i=0; i<3; i++) {
+            sharedCards.add(firstPlayer.hand.getCards().get(i));
+            sharedCards.add(secondPlayer.hand.getCards().get(i));
+        }
+
+
         Rank rank = rules.evaluate(firstPlayer.hand);
         Rank otherRank = rules.evaluate(secondPlayer.hand);
 
